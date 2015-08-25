@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: cloud
+  cloud:
+    config:
+      discovery:
+        enabled: true
+server:
+  port: 8761
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+eureka:
+  instance:
+    hostname: discovery
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://discovery-77.cfapps.io/eureka/
+---
+spring:
+  profiles: docker
+server:
+  port: 8761
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: true
+eureka:
+  instance:
+    hostname: discovery
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/

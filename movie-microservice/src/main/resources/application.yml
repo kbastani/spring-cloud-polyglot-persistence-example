@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: cloud
+  jpa:
+    show_sql: false
+    database: MYSQL
+    hibernate:
+      ddl-auto: none
+server:
+  port: 9006
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-77.cfapps.io/eureka/
+  instance:
+    hostname: movie-77.cfapps.io
+    nonSecurePort: 80
+ribbon:
+  eureka:
+    enabled: true
+---
+spring:
+  profiles: docker
+  jpa:
+    show_sql: false
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: hsqldb
+server:
+  port: 1111
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+  instance:
+    preferIpAddress: true
+ribbon:
+  eureka:
+    enabled: true

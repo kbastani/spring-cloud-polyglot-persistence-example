@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: cloud
+  application:
+    name: movie
+  cloud:
+    config:
+      uri: http://config-99.cfapps.io/
+encrypt:
+  failOnError: false
+---
+spring:
+  profiles: docker
+  application:
+    name: movie
+  cloud:
+    config:
+      uri: http://configserver:8888
+      enabled: false
+encrypt:
+  failOnError: false

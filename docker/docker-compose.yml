@@ -1,0 +1,67 @@
+--- 
+config:
+  image: kbastani/config-microservice
+  hostname: configServer
+  links:
+    - discovery
+  ports:
+    - "8888:8888"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+discovery:
+  image: kbastani/discovery-microservice
+  hostname: discovery
+  ports:
+    - "8761:8761"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+gateway:
+  image: kbastani/api-gateway-microservice
+  hostname: gateway
+  links:
+    - discovery
+    - config
+    - user
+    - rating
+    - movie
+  ports:
+    - "10000:10000"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+movie:
+  hostname: movie
+  image: kbastani/movie-microservice
+  links:
+    - discovery
+    - config
+  ports:
+    - "9006:9006"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+moviesui:
+  image: kbastani/ui-search
+  links:
+    - discovery
+    - config
+  ports:
+    - "1111:1111"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+rating:
+  hostname: rating
+  image: kbastani/rating-microservice
+  links:
+    - discovery
+    - config
+  ports:
+    - "9004:9004"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+user:
+  hostname: user
+  image: kbastani/user-microservice
+  links:
+    - discovery
+    - config
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker

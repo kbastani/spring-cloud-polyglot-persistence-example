@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: cloud
+  cloud:
+    config:
+      enabled: true
+server:
+  port: 9004
+neo4j:
+  uri: http://ec2-52-10-122-143.us-west-2.compute.amazonaws.com:7474/db/data/
+  username: neo4j
+  password: graphdb
+  bootstrap: false
+aws:
+  s3:
+    url: https://s3.amazonaws.com/dataset-demos
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-77.cfapps.io/eureka/
+  instance:
+    hostname: rating-77.cfapps.io
+    nonSecurePort: 80
+ribbon:
+  eureka:
+    enabled: true
+---
+spring:
+  profiles: docker
+server:
+  port: 9004
+neo4j:
+  uri: http://localhost:7474/db/data/
+  username: neo4j
+  password: graphdb
+  bootstrap: true
+aws:
+  s3:
+    url: https://s3.amazonaws.com/dataset-demos
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+  instance:
+    preferIpAddress: true
+ribbon:
+  eureka:
+    enabled: true

@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: cloud
+  application:
+    name: discovery
+  cloud:
+    config:
+      uri: http://config-99.cfapps.io
+encrypt:
+  failOnError: false
+---
+spring:
+  profiles: docker
+  application:
+    name: discovery
+  cloud:
+    config:
+      uri: http://192.168.59.103:8888
+encrypt:
+  failOnError: false
