@@ -59,24 +59,29 @@ Each microservice will coordinate with Eureka to retrieve API routes for the ent
 
 ## Run it on PivotalCF
 
-1. Requirements: Maven 3, Java 8, Docker, Docker Compose
+* Requirements: Maven 3, Java 8, Docker, Docker Compose
 
-2. Download Docker if you haven’t already. Follow the instructions found [here] (https://docs.docker.com/installation/), to get Docker up and running on your development machine. You will also need to install [Docker Compose] (https://docs.docker.com/compose/), the installation guide can be found [here] (https://docs.docker.com/compose/install/)
+* Download Docker if you haven’t already. Follow the instructions found [here] (https://docs.docker.com/installation/), to get Docker up and running on your development machine. You will also need to install [Docker Compose] (https://docs.docker.com/compose/), the installation guide can be found [here] (https://docs.docker.com/compose/install/)
 
-3. Clone the repo: $git clone https://github.com/kbhattacharya-pivotal/spring-cloud-polyglot-persistence-example.git
+* Clone the repo: 
+    
+> $ git clone https://github.com/kbastani/spring-cloud-polyglot-persistence-example.git
 
-4. Building the project:
-* To build the project, from the terminal, run the following command at the root of the project.
-* $mvn clean install (from project root dir)
+* Building the project:
 
-5. Push to PivotalCF
-* edit manifest.yml to use your domain name instead of cfapps.io
-* make sure a MySQL service instance is present in the space you are pushing to, with name "mysql" 
-* $cf push (from the project root dir)
+To build the project, from the terminal, run the following command at the root of the project.
+
+> $ mvn clean install (from project root dir)
+
+* Push to PivotalCF
+
+Edit manifest.yml to use your domain name instead of cfapps.io
+
+Make sure a MySQL service instance is present in the space you are pushing to, with name "mysql" 
+
+> $ cf push (from the project root dir)
 
 That's it!
-
-
 
 
 # License
