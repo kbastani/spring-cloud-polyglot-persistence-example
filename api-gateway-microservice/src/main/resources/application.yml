@@ -24,6 +24,8 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery-77.cfapps.io/eureka/
 
+sidecar:
+  port: 8000
 ---
 
 spring:
@@ -46,3 +48,6 @@ eureka:
 ribbon:
   eureka:
     enabled: true
+
+sidecar:
+  port: 8000    
