@@ -1,4 +1,4 @@
-package data.config;
+package service.data.config;
 
 import com.couchbase.client.CouchbaseClient;
 import net.spy.memcached.FailureMode;
